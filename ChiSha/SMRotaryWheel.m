@@ -51,27 +51,37 @@ static float maxAlphavalue = 1.0;
     
     for (int i = 0; i < numberOfSections; i++) {
         
-        UIImageView *im = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"segment.png"]];
-        
-        im.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
-        im.layer.position = CGPointMake(container.bounds.size.width/2.0-container.frame.origin.x, 
-                                        container.bounds.size.height/2.0-container.frame.origin.y); 
-        im.transform = CGAffineTransformMakeRotation(angleSize*i);
-        im.alpha = minAlphavalue;
-        im.tag = i;
-        
-        if (i == 0) {
-            im.alpha = maxAlphavalue;
-        }
+//        UIImageView *im = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"segment.png"]];
+//        
+//        im.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
+//        im.layer.position = CGPointMake(container.bounds.size.width/2.0-container.frame.origin.x, 
+//                                        container.bounds.size.height/2.0-container.frame.origin.y); 
+//        im.transform = CGAffineTransformMakeRotation(angleSize*i);
+//        im.alpha = minAlphavalue;
+//        im.tag = i;
+//        
+//        if (i == 0) {
+//            im.alpha = maxAlphavalue;
+//        }
         
 //        UIImageView *cloveImage = [[UIImageView alloc] initWithFrame:CGRectMake(12, 15, 40, 40)];
 //        cloveImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon%i.png", i]];
 //        [im addSubview:cloveImage];
         
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(12, 15, 40, 40)];
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, container.bounds.size.width/2 - 40,70)];
         lbl.text = [NSString stringWithFormat:@"aaa %d",i];
-        [im addSubview:lbl];
-        [container addSubview:im];
+        lbl.backgroundColor = [UIColor orangeColor];
+        lbl.layer.anchorPoint = CGPointMake(1.0, 0.5);
+        lbl.layer.position = CGPointMake(container.bounds.size.width/2.0-container.frame.origin.x,
+                                         container.bounds.size.height/2.0-container.frame.origin.y);
+        lbl.transform = CGAffineTransformMakeRotation(angleSize*i);
+        lbl.alpha = minAlphavalue;
+        lbl.tag = i;
+        if (i == 0) {
+            lbl.alpha = maxAlphavalue;
+        }
+//        [im addSubview:lbl];
+        [container addSubview:lbl];
         
     }
     
@@ -84,84 +94,57 @@ static float maxAlphavalue = 1.0;
     bg.image = [UIImage imageNamed:@"bg.png"];
     [self addSubview:bg];
     
-    UIImageView *mask = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 58, 58)];
-    mask.image =[UIImage imageNamed:@"centerButton.png"] ;
-    mask.center = self.center;
-    mask.center = CGPointMake(mask.center.x, mask.center.y+3);
-    [self addSubview:mask];
+//    UIImageView *mask = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 58, 58)];
+//    mask.image =[UIImage imageNamed:@"centerButton.png"] ;
+//    mask.center = self.center;
+//    mask.center = CGPointMake(mask.center.x, mask.center.y+3);
+//    [self addSubview:mask];
     
     if (numberOfSections % 2 == 0) {
-        
         [self buildClovesEven];
         
     } else {
-        
         [self buildClovesOdd];
-        
     }
     
     [self.delegate wheelDidChangeValue:[self getCloveName:currentValue]];
-
-    
 }
 
 
 - (UIImageView *) getCloveByValue:(int)value {
-
     UIImageView *res;
-    
     NSArray *views = [container subviews];
-    
     for (UIImageView *im in views) {
-        
         if (im.tag == value)
             res = im;
-        
     }
-    
     return res;
-    
 }
 
 - (void) buildClovesEven {
-    
     CGFloat fanWidth = M_PI*2/numberOfSections;
     CGFloat mid = 0;
-    
     for (int i = 0; i < numberOfSections; i++) {
-        
         SMClove *clove = [[SMClove alloc] init];
         clove.midValue = mid;
         clove.minValue = mid - (fanWidth/2);
         clove.maxValue = mid + (fanWidth/2);
         clove.value = i;
-        
-        
         if (clove.maxValue-fanWidth < - M_PI) {
-            
             mid = M_PI;
             clove.midValue = mid;
             clove.minValue = fabsf(clove.maxValue);
-            
         }
-        
         mid -= fanWidth;
         
-        
         NSLog(@"cl is %@", clove);
-        
         [cloves addObject:clove];
-        
     }
-    
 }
 
-
 - (void) buildClovesOdd {
-    
     CGFloat fanWidth = M_PI*2/numberOfSections;
     CGFloat mid = 0;
-    
     for (int i = 0; i < numberOfSections; i++) {
         
         SMClove *clove = [[SMClove alloc] init];
@@ -169,27 +152,17 @@ static float maxAlphavalue = 1.0;
         clove.minValue = mid - (fanWidth/2);
         clove.maxValue = mid + (fanWidth/2);
         clove.value = i;
-        
         mid -= fanWidth;
-        
         if (clove.minValue < - M_PI) {
-            
             mid = -mid;
             mid -= fanWidth; 
-            
         }
-        
-                
         [cloves addObject:clove];
-        
         NSLog(@"cl is %@", clove);
-        
     }
-    
 }
 
 - (float) calculateDistanceFromCenter:(CGPoint)point {
-    
     CGPoint center = CGPointMake(self.bounds.size.width/2.0f, self.bounds.size.height/2.0f);
 	float dx = point.x - center.x;
 	float dy = point.y - center.y;
@@ -198,7 +171,6 @@ static float maxAlphavalue = 1.0;
 }
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-    
     CGPoint touchPoint = [touch locationInView:self];
     float dist = [self calculateDistanceFromCenter:touchPoint];
     
@@ -219,12 +191,10 @@ static float maxAlphavalue = 1.0;
     im.alpha = minAlphavalue;
     
     return YES;
-    
 }
 
 - (BOOL)continueTrackingWithTouch:(UITouch*)touch withEvent:(UIEvent*)event
 {
-        
 	CGPoint pt = [touch locationInView:self];
     
     float dist = [self calculateDistanceFromCenter:pt];
@@ -233,8 +203,7 @@ static float maxAlphavalue = 1.0;
     {
         // a drag path too close to the center
         NSLog(@"drag path too close to the center (%f,%f)", pt.x, pt.y);
-        
-        // here you might want to implement your solution when the drag 
+        // here you might want to implement your solution when the drag
         // is too close to the center
         // You might go back to the clove previously selected
         // or you might calculate the clove corresponding to
@@ -251,44 +220,27 @@ static float maxAlphavalue = 1.0;
     container.transform = CGAffineTransformRotate(startTransform, -angleDifference);
     
     return YES;
-	
 }
 
 - (void)endTrackingWithTouch:(UITouch*)touch withEvent:(UIEvent*)event
 {
-    
     CGFloat radians = atan2f(container.transform.b, container.transform.a);
-    
     CGFloat newVal = 0.0;
-    
     for (SMClove *c in cloves) {
-        
         if (c.minValue > 0 && c.maxValue < 0) { // anomalous case
-            
             if (c.maxValue > radians || c.minValue < radians) {
-                
                 if (radians > 0) { // we are in the positive quadrant
-                    
                     newVal = radians - M_PI;
-                    
                 } else { // we are in the negative one
-                    
-                    newVal = M_PI + radians;                    
-                    
+                    newVal = M_PI + radians;
                 }
                 currentValue = c.value;
-                
             }
-            
         }
-        
         else if (radians > c.minValue && radians < c.maxValue) {
-            
             newVal = radians - c.midValue;
             currentValue = c.value;
-            
         }
-        
     }
     
     [UIView beginAnimations:nil context:NULL];
@@ -303,34 +255,26 @@ static float maxAlphavalue = 1.0;
     
     UIImageView *im = [self getCloveByValue:currentValue];
     im.alpha = maxAlphavalue;
-    
 }
 
 - (NSString *) getCloveName:(int)position {
-    
     NSString *res = @"";
-    
     switch (position) {
         case 0:
             res = @"Circles";
             break;
-            
         case 1:
             res = @"Flower";
             break;
-            
         case 2:
             res = @"Monster";
             break;
-            
         case 3:
             res = @"Person";
             break;
-            
         case 4:
             res = @"Smile";
             break;
-            
         case 5:
             res = @"Sun";
             break;

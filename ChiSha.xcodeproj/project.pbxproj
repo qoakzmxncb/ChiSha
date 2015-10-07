@@ -10,6 +10,10 @@
 		D21DF07C1BC572F9000D5DE2 /* 无标题.png in Resources */ = {isa = PBXBuildFile; fileRef = D21DF07B1BC572F9000D5DE2 /* 无标题.png */; settings = {ASSET_TAGS = (); }; };
 		D21DF07E1BC573EF000D5DE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D21DF07D1BC573EF000D5DE2 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		D21DF0811BC57702000D5DE2 /* SMRotaryWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = D21DF0801BC57702000D5DE2 /* SMRotaryWheel.m */; settings = {ASSET_TAGS = (); }; };
+		D21DF0851BC57FFB000D5DE2 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D21DF0821BC57FFB000D5DE2 /* bg.png */; settings = {ASSET_TAGS = (); }; };
+		D21DF0861BC57FFB000D5DE2 /* centerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D21DF0831BC57FFB000D5DE2 /* centerButton.png */; settings = {ASSET_TAGS = (); }; };
+		D21DF0871BC57FFB000D5DE2 /* segment.png in Resources */ = {isa = PBXBuildFile; fileRef = D21DF0841BC57FFB000D5DE2 /* segment.png */; settings = {ASSET_TAGS = (); }; };
+		D21DF08B1BC58029000D5DE2 /* SMCLove.m in Sources */ = {isa = PBXBuildFile; fileRef = D21DF0891BC58029000D5DE2 /* SMCLove.m */; settings = {ASSET_TAGS = (); }; };
 		D29E58021BC56C380056A10F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D29E58011BC56C380056A10F /* main.m */; };
 		D29E58051BC56C380056A10F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D29E58041BC56C380056A10F /* AppDelegate.m */; };
 		D29E58081BC56C380056A10F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D29E58071BC56C380056A10F /* ViewController.m */; };
@@ -22,6 +26,12 @@
 		D21DF07D1BC573EF000D5DE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D21DF07F1BC57702000D5DE2 /* SMRotaryWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRotaryWheel.h; sourceTree = "<group>"; };
 		D21DF0801BC57702000D5DE2 /* SMRotaryWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRotaryWheel.m; sourceTree = "<group>"; };
+		D21DF0821BC57FFB000D5DE2 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		D21DF0831BC57FFB000D5DE2 /* centerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centerButton.png; sourceTree = "<group>"; };
+		D21DF0841BC57FFB000D5DE2 /* segment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = segment.png; sourceTree = "<group>"; };
+		D21DF0881BC58029000D5DE2 /* SMCLove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCLove.h; sourceTree = "<group>"; };
+		D21DF0891BC58029000D5DE2 /* SMCLove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCLove.m; sourceTree = "<group>"; };
+		D21DF08A1BC58029000D5DE2 /* SMRotaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRotaryProtocol.h; sourceTree = "<group>"; };
 		D29E57FD1BC56C380056A10F /* ChiSha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChiSha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29E58011BC56C380056A10F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D29E58031BC56C380056A10F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,10 +73,16 @@
 		D29E57FF1BC56C380056A10F /* ChiSha */ = {
 			isa = PBXGroup;
 			children = (
+				D21DF0821BC57FFB000D5DE2 /* bg.png */,
+				D21DF0831BC57FFB000D5DE2 /* centerButton.png */,
+				D21DF0841BC57FFB000D5DE2 /* segment.png */,
 				D29E58031BC56C380056A10F /* AppDelegate.h */,
 				D29E58041BC56C380056A10F /* AppDelegate.m */,
 				D21DF07F1BC57702000D5DE2 /* SMRotaryWheel.h */,
 				D21DF0801BC57702000D5DE2 /* SMRotaryWheel.m */,
+				D21DF0881BC58029000D5DE2 /* SMCLove.h */,
+				D21DF0891BC58029000D5DE2 /* SMCLove.m */,
+				D21DF08A1BC58029000D5DE2 /* SMRotaryProtocol.h */,
 				D29E58061BC56C380056A10F /* ViewController.h */,
 				D29E58071BC56C380056A10F /* ViewController.m */,
 				D29E58091BC56C380056A10F /* Main.storyboard */,
@@ -144,6 +160,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21DF0871BC57FFB000D5DE2 /* segment.png in Resources */,
+				D21DF0861BC57FFB000D5DE2 /* centerButton.png in Resources */,
+				D21DF0851BC57FFB000D5DE2 /* bg.png in Resources */,
 				D29E58101BC56C380056A10F /* LaunchScreen.storyboard in Resources */,
 				D21DF07E1BC573EF000D5DE2 /* Images.xcassets in Resources */,
 				D21DF07C1BC572F9000D5DE2 /* 无标题.png in Resources */,
@@ -158,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21DF08B1BC58029000D5DE2 /* SMCLove.m in Sources */,
 				D21DF0811BC57702000D5DE2 /* SMRotaryWheel.m in Sources */,
 				D29E58081BC56C380056A10F /* ViewController.m in Sources */,
 				D29E58051BC56C380056A10F /* AppDelegate.m in Sources */,
